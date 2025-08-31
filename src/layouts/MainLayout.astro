@@ -1,0 +1,61 @@
+---
+import "../../node_modules/beercss/dist/cdn/beer.min.css";
+import "@fontsource-variable/roboto";
+import "../../node_modules/beercss/dist/cdn/beer.min.js";
+
+const { name } = Astro.props;
+const isMainPage = name === "VendroidEnhanced";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{isMainPage ? name : `${name} -  VendroidEnhanced`}</title>
+		<style>
+			#logo {
+				border-radius: 40px;
+			}
+
+			main {
+				padding: 20px;
+			}
+
+			body {
+				font-family: "Roboto Variable";
+			}
+		</style>
+	</head>
+	<body>
+		<header class="fill fixed">
+			<nav>
+				{
+					!isMainPage && (
+						<a href="/">
+							<button class="circle transparent">
+								<i>arrow_back</i>
+							</button>
+						</a>
+					)
+				}
+				{
+					isMainPage ? (
+						<img
+							src="/vde.png"
+							alt="VendroidEnhanced logo"
+							width="50px"
+							id="logo"
+						/>
+					) : (
+						<h6 class="max">{name}</h6>
+					)
+				}
+			</nav>
+		</header>
+		<main class="responsive">
+			<slot />
+		</main>
+	</body>
+</html>

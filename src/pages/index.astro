@@ -1,12 +1,38 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>VendroidEnhanced</title>
-	</head>
-	<body>
-		<main class="responsive"></main>
-	</body>
-</html>
+---
+import Buttons from "../components/Buttons.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<style>
+	h3 {
+		font-weight: 700;
+	}
+	.tagline {
+		font-size: 1.3rem;
+		font-weight: 600;
+		margin-top: 10px;
+	}
+
+	#screenshot {
+		width: 100%;
+	}
+</style>
+
+<MainLayout name="VendroidEnhanced">
+	<div class="grid">
+		<div class="s12 m6 l6">
+			<h3>VendroidEnhanced</h3>
+			<p class="tagline">
+				The cutest client mod, now on your Android device
+			</p>
+			<Buttons />
+		</div>
+		<div class="s12 m12 l6">
+			<img
+				src="/screenshit.png"
+				alt="Screenshot of VendroidEnhanced showcasing Vencord Settings on a Pixel 6 Pro"
+				id="screenshot"
+			/>
+		</div>
+	</div>
+</MainLayout>
