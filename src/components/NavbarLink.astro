@@ -1,0 +1,13 @@
+---
+const { href } = Astro.props;
+---
+
+<style>
+	a {
+		font-size: 1.05rem;
+		font-weight: 500;
+		margin-left: 10px;
+	}
+</style>
+
+<a {href} class="primary-text"><slot /></a>

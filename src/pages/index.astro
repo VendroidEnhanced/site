@@ -1,7 +1,68 @@
 ---
 import Buttons from "../components/Buttons.astro";
+import TalkingPoint from "../components/TalkingPoint.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const talkingPoints = [
+	{
+		title: "Uses Vencord",
+		desc: "Loads the Discord website and injects Vencord, allowing you to use your favourite plugins"
+	},
+	{
+		title: "Mobile-friendly",
+		desc: "The mobile website is used and some features (eg. swipe gestures) are backported"
+	},
+	{
+		title: "Actively maintained",
+		desc: "If any issues arise with the app, they are fixed quickly"
+	},
+	{
+		title: "Equicord support",
+		desc: "Use extra plugins included with Equicord simply by enabling a setting"
+	},
+	{
+		title: "Customisable",
+		desc: "Most Vencord themes will work and you can customise the app icon/splash screen"
+	}
+];
 ---
+
+<script define:vars={{ talkingPoints }}>
+	let currentPaige = 0;
+
+	function movePaige() {
+		ui(`#page-${currentPaige}`);
+		document.querySelector("#paige-indicator").innerHTML =
+			`(${currentPaige + 1}/${talkingPoints.length})`;
+	}
+	function decreasePaige() {
+		if (currentPaige === 0) currentPaige = talkingPoints.length - 1;
+		else currentPaige--;
+	}
+	function increasePaige() {
+		if (currentPaige === talkingPoints.length - 1) currentPaige = 0;
+		else currentPaige++;
+	}
+
+	const autoMoveInterval = setInterval(() => {
+		increasePaige();
+		movePaige();
+	}, 2000);
+
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelector("#previous").addEventListener("click", () => {
+			decreasePaige();
+			movePaige();
+			clearInterval(autoMoveInterval);
+		});
+
+		document.querySelector("#next").addEventListener("click", () => {
+			increasePaige();
+			movePaige();
+			clearInterval(autoMoveInterval);
+		});
+	});
+</script>
 
 <style>
 	h3 {
@@ -14,22 +75,101 @@ import MainLayout from "../layouts/MainLayout.astro";
 	}
 
 	#screenshot {
-		width: 100%;
+		width: 70%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	@media only screen and (max-width: 600px) {
+		#screenshot {
+			width: 100%;
+		}
+
+		h3,
+		.tagline {
+			text-align: center;
+			width: 100%;
+		}
+	}
+
+	.invisible-paige {
+		display: none;
+	}
+
+	#paiginator {
+		margin-top: 15px;
+
+		#buttons {
+			display: flex;
+			gap: 10px;
+			margin-top: 15px;
+
+			button {
+				width: 100%;
+				background-color: var(--surface-container-low) !important;
+				box-shadow: var(--elevate1) !important;
+			}
+		}
+	}
+</style>
+
+<style is:global>
+	#talking-pts div,
+	#talking-pts article {
+		height: 100% !important;
 	}
 </style>
 
 <MainLayout name="VendroidEnhanced">
 	<div class="grid">
-		<div class="s12 m6 l6">
+		<div class="s12 m12 l6">
 			<h3>VendroidEnhanced</h3>
 			<p class="tagline">
 				The cutest client mod, now on your Android device
 			</p>
 			<Buttons />
+			<h6>
+				Features <span
+					class="s m"
+					id="paige-indicator"
+					style="font-size: 1rem;">(1/{talkingPoints.length})</span
+				>
+			</h6>
+			<div class="grid l" id="talking-pts">
+				{
+					talkingPoints.map(point => (
+						<TalkingPoint title={point.title} desc={point.desc} />
+					))
+				}
+			</div>
+			<div id="paiginator" class="s m">
+				{
+					talkingPoints.map((point, index) => (
+						<div
+							class={index === 0 ? "page active" : "page"}
+							id={`page-${index}`}
+						>
+							<TalkingPoint
+								title={point.title}
+								desc={point.desc}
+							/>
+						</div>
+					))
+				}
+				<div id="buttons">
+					<button class="icon transparent primary-text" id="previous"
+						><i>arrow_left</i></button
+					>
+					<button class="icon transparent primary-text" id="next"
+						><i>arrow_right</i></button
+					>
+				</div>
+			</div>
 		</div>
 		<div class="s12 m12 l6">
 			<img
-				src="/screenshit.png"
+				src="/screenshot.png"
 				alt="Screenshot of VendroidEnhanced showcasing Vencord Settings on a Pixel 6 Pro"
 				id="screenshot"
 			/>

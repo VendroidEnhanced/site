@@ -1,0 +1,19 @@
+---
+const { title, desc, showPaiginator } = Astro.props;
+---
+
+<style>
+	p {
+		margin: 0;
+		margin-top: 8px;
+	}
+</style>
+
+<div class="s12 m12 l6">
+	<article>
+		<h6>{title}</h6>
+		<p>
+			{desc}
+		</p>
+	</article>
+</div>
