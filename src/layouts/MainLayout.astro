@@ -1,20 +1,39 @@
 ---
 import "../../node_modules/beercss/dist/cdn/beer.min.css";
 import "@fontsource-variable/roboto";
-import "../../node_modules/beercss/dist/cdn/beer.min.js";
+import NavbarLink from "../components/NavbarLink.astro";
 
 const { name } = Astro.props;
 const isMainPage = name === "VendroidEnhanced";
+
+const metaTags = {
+	title: "VendroidEnhanced",
+	description: "Use Vencord on your Android device",
+	color: "#7c83e6",
+	image: "/vde.png"
+};
 ---
+
+<script>
+	import "../../node_modules/beercss/dist/cdn/beer.min.js";
+</script>
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{isMainPage ? name : `${name} -  VendroidEnhanced`}</title>
-		<style>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<meta name="og:type" content="website" />
+		<meta name="description" content={metaTags.description} />
+		<meta name="og:title" content={metaTags.title} />
+		<meta name="og:description" content={metaTags.description} />
+		<meta name="og:image" content={metaTags.image} />
+		<meta name="theme-color" content={metaTags.color} />
+		<meta name="darkreader-lock" />
+		<title>{isMainPage ? name : `${name} -  VendroidEnhanced`}</title><style
+		>
 			#logo {
 				border-radius: 40px;
 			}
@@ -26,32 +45,27 @@ const isMainPage = name === "VendroidEnhanced";
 			body {
 				font-family: "Roboto Variable";
 			}
-		</style>
-	</head>
+		</style></head
+	>
+
 	<body>
-		<header class="fill fixed">
+		<header class="fixed blur">
 			<nav>
-				{
-					!isMainPage && (
-						<a href="/">
-							<button class="circle transparent">
-								<i>arrow_back</i>
-							</button>
-						</a>
-					)
-				}
-				{
-					isMainPage ? (
-						<img
-							src="/vde.png"
-							alt="VendroidEnhanced logo"
-							width="50px"
-							id="logo"
-						/>
-					) : (
-						<h6 class="max">{name}</h6>
-					)
-				}
+				<a href="/">
+					<img
+						src="/vde.png"
+						alt="VendroidEnhanced logo"
+						width="50px"
+						id="logo"
+					/>
+				</a>
+				<h6 class="max"></h6>
+				<NavbarLink href="/download">Download</NavbarLink>
+				<NavbarLink href="/faq">FAQ</NavbarLink>
+				<NavbarLink
+					href="https://github.com/orgs/VendroidEnhanced/projects/1"
+					>Roadmap</NavbarLink
+				>
 			</nav>
 		</header>
 		<main class="responsive">
