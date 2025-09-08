@@ -44,6 +44,10 @@ const metaTags = {
 			body {
 				font-family: "Roboto Variable";
 			}
+
+			footer {
+				margin-top: 15px;
+			}
 		</style></head
 	>
 
@@ -77,5 +81,28 @@ const metaTags = {
 			}
 			<slot />
 		</main>
+		<footer class="responsive">
+			<p>
+				Huge thanks to <a href="https://vencord.dev" class="link"
+					>Vencord</a
+				> for making the mod and the original version of this app, without
+				them this wouldn't exist.
+				<br />
+				Using Vencord is against Discord's ToS; see <a
+					href="https://github.com/vendicated/vencord#disclaimer"
+					class="link">this disclaimer</a
+				> for more info.
+			</p>
+			<p>
+				VendroidEnhanced is under the <a
+					class="link"
+					href="https://github.com/nin0-dev/VendroidEnhanced/blob/main/LICENSE"
+					>GPLv3 license</a
+				>.
+				<br />
+				This website © {new Date(Date.now()).getFullYear()} nin0. All rights
+				reserved.
+			</p>
+		</footer>
 	</body>
 </html>
