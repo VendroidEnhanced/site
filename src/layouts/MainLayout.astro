@@ -1,5 +1,6 @@
 ---
 import "../../node_modules/beercss/dist/cdn/beer.min.css";
+import "../colors.css";
 import "@fontsource-variable/roboto";
 import NavbarLink from "../components/NavbarLink.astro";
 
@@ -7,16 +8,12 @@ const { name } = Astro.props;
 const isMainPage = name === "VendroidEnhanced";
 
 const metaTags = {
-	title: "VendroidEnhanced",
+	title: isMainPage ? "VendroidEnhanced" : `${name} - VendroidEnhanced`,
 	description: "Use Vencord on your Android device",
 	color: "#7c83e6",
 	image: "/vde.png"
 };
 ---
-
-<script>
-	import "../../node_modules/beercss/dist/cdn/beer.min.js";
-</script>
 
 <html lang="en">
 	<head>
@@ -24,7 +21,9 @@ const metaTags = {
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+		<script>
+			import "../../node_modules/beercss/dist/cdn/beer.min.js";
+		</script>
 		<meta name="og:type" content="website" />
 		<meta name="description" content={metaTags.description} />
 		<meta name="og:title" content={metaTags.title} />
@@ -69,6 +68,13 @@ const metaTags = {
 			</nav>
 		</header>
 		<main class="responsive">
+			{
+				!isMainPage && (
+					<h3 style="font-weight: 500; margin-bottom: 20px;">
+						{name}
+					</h3>
+				)
+			}
 			<slot />
 		</main>
 	</body>

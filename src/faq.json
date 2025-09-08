@@ -1,0 +1,54 @@
+{
+	"install": {
+		"q": "How do I install this?",
+		"a": "https://vendroid.nin0.dev/download"
+	},
+	"broke": {
+		"q": "My Vencord broke and I cannot access VendroidEnhanced settings! How do I update?",
+		"a": "You'll need to go into recovery mode by holding the app icon on your home screen. Then use the \"Force Update Vencord\" option."
+	},
+	"data": {
+		"q": "Is any data collected through the update service?",
+		"a": "No. If you really do not want to contact external servers, disable notification and update checking."
+	},
+	"slow": {
+		"q": "VendroidEnhanced is slow!",
+		"a": "Try disabling AlwaysAnimate and CSS. If it is still slow, it's your device/Discord Web being slow."
+	},
+	"login": {
+		"q": "I have to login. Is it safe?",
+		"a": "Yes, you have to login to use Discord. It is safe, you can review the code yourself if you'd like to."
+	},
+	"ui": {
+		"q": "The UI is messed up somewhere. How do I fix that?",
+		"a": "Chances are I already know because Discord cannot make a good mobile web UI, but feel free to complain in support."
+	},
+	"equicord": {
+		"q": "Can I use a Vencord fork (eg. Equicord)?",
+		"a": "Equicord comes with VendroidEnhanced and is supported. It allows you to quickly use more userplugins, but some of them may be low-quality or break Vencord's plugin guidelines."
+	},
+	"support": {
+		"q": "Is VendroidEnhanced supported by Vencord/Equicord?",
+		"a": "No. Please do not ask for support in the Vencord/Equicord support channels while using VendroidEnhanced. In fact, typing in these support channels isn't possible on VendroidEnhanced."
+	},
+	"bypass": {
+		"q": "Okay, I know that VendroidEnhanced isn't supported by Vencord. Can I disable the support block?",
+		"a": "Yes, at the very bottom of the plugin list, find VendroidEnhancements. Open its settings, and allow support message sending here."
+	},
+	"userplugins": {
+		"q": "Can I install userplugins?",
+		"a": "Yes, but you'd need to build Vencord yourself while also applying the patches done in the VendroidEnhanced build process. Take note that you will not get help with this process."
+	},
+	"viggy": {
+		"q": "I don't wanna see a catgirl when opening Vendroid! How do I hide it?",
+		"a": "In VendroidEnhanced settings, you can switch out the splash screen."
+	},
+	"unban-spam": {
+		"q": "I got banned from nin0Corp (support server) for a hacked account. Can I be unbanned?",
+		"a": "Yes, DM nin0.dev on Discord. You can find me in the Vencord Server. https://discord.gg/vencord"
+	},
+	"unban": {
+		"q": "I got banned from nin0Corp (support server) for any other reason. Can I be unbanned?",
+		"a": "No."
+	}
+}

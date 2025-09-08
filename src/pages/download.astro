@@ -1,0 +1,84 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<script>
+	document.addEventListener("DOMContentLoaded", async () => {
+		try {
+			const fetcher = await fetch(
+				"https://vendroid.nin0.dev/api/updates?forceSend=true"
+			);
+			const data: {
+				update: {
+					title: string;
+					text: string;
+				};
+			} = await fetcher.json();
+
+			document
+				.querySelector("#changelog")!
+				.querySelector("h6")!.innerHTML += ` (${data.update.title})`;
+			document
+				.querySelector("#changelog")!
+				.querySelector("p")!.innerHTML = data.update.text;
+		} catch (e) {
+			console.error(e);
+			alert("Could not load VendroidEnhanced changelog");
+		}
+	});
+</script>
+
+<style>
+	article h6 {
+		font-size: 1.45rem;
+		font-weight: 400;
+	}
+</style>
+
+<MainLayout name="Download">
+	<div class="s12 m12 l6">
+		<article class="border danger">
+			<h6>Warning</h6>
+			<p>
+				This app is still in beta. You may experience some issues. It is
+				recommended that you join the <a
+					class="link"
+					href="https://discord.gg/qtmpcF56Yf">support server</a
+				> for updates.
+			</p>
+			<p>
+				<span style="font-weight: bold;">
+					DO NOT complain in:
+					<ul style="margin-top: 0;">
+						<li>The Vencord/Equicord servers;</li>
+						<li>The Vendicated/Vencord repository;</li>
+						<li>The Equicord/Equicord repository;</li>
+						<li>The Vencord/Vendroid repository.</li>
+					</ul>
+				</span>
+				VendroidEnhanced is an unofficial client and is therefore unsupported
+				by the above. ONLY report issues in the <a
+					class="link"
+					href="https://discord.gg/qtmpcF56Yf">support server</a
+				>.
+			</p>
+		</article>
+		<article id="changelog">
+			<h6>Changelog</h6>
+			<p>Loading...</p>
+		</article>
+		<div class="grid">
+			<div class="s0 m0 l3"></div>
+			<div class="s12 m12 l6">
+				<a
+					href="https://github.com/nin0-dev/VendroidEnhanced/releases/latest/download/app-release.apk"
+					style="display: block;"
+				>
+					<button class="responsive">
+						<i>download</i> Download VendroidEnhanced
+					</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</MainLayout>
