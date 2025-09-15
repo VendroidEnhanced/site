@@ -8,8 +8,8 @@
 		"a": "You'll need to go into recovery mode by holding the app icon on your home screen. Then use the \"Force Update Vencord\" option."
 	},
 	"data": {
-		"q": "Is any data collected through the update service?",
-		"a": "No. If you really do not want to contact external servers, disable notification and update checking."
+		"q": "Is any personal data collected through the update service?",
+		"a": "No. Only aggregate statistics of which versions query the API are stored. If you really do not want to contact external servers, disable notification and update checking."
 	},
 	"slow": {
 		"q": "VendroidEnhanced is slow!",
