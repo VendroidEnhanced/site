@@ -23,6 +23,10 @@
 		"q": "The UI is messed up somewhere. How do I fix that?",
 		"a": "Chances are I already know because Discord cannot make a good mobile web UI, but feel free to complain in support."
 	},
+	"voice": {
+		"q": "Voice chat?",
+		"a": "Currently, it is nonexistent. Someday, support will be added."
+	},
 	"equicord": {
 		"q": "Can I use a Vencord fork (eg. Equicord)?",
 		"a": "Equicord comes with VendroidEnhanced and is supported. It allows you to quickly use more userplugins, but some of them may be low-quality or break Vencord's plugin guidelines."
